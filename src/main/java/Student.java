@@ -53,6 +53,7 @@ public class Student {
      */
     public String bestSubject() {
 
+
         return null;
 
     }
@@ -63,7 +64,15 @@ public class Student {
      */
     public double averageGrade() {
 
-        return 0.0;
+        double count = 0;
+        double sum = 0;
+        for (Subject subject : subjects){
+            if (subject != null){
+                count++;
+                sum += subject.getCurrentGrade();
+            }
+        }
+        return sum/count;
 
     }
 
@@ -80,8 +89,12 @@ public class Student {
      * @return the student's report card (a String).
      */
     public String reportCard() {
+        String toReturn = "Report card for " + firstName + " " + lastName + "\n";
 
-        return null;
+        for (Subject subject : subjects){
+            toReturn = toReturn + subject.getName() + "\t" + subject.getCurrentGrade() + "\n";
+        }
+        return toReturn.strip();
 
     }
 
